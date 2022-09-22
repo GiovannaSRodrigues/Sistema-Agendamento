@@ -5,6 +5,29 @@ public class PlanoDeSaude {
 	// atributos
 	private String operadora;
 	private String tipoDoplano;
+	
+	//construtores
+	
+	//sempre será público
+	//não há retorno (void)
+	//o nome do metodo é o nome da classe
+	
+	public PlanoDeSaude(String operadora) {
+		// contrutor que não faz nada padrão/defalt 
+		//vamos sobreescrever
+		this.operadora = operadora;
+	}
+	//podemos ter mesma asssinaturas se or argumentos forem diferentes
+	public PlanoDeSaude(String operadora, String tipoDoPlano) {
+		this.operadora = operadora;
+		this.tipoDoplano = tipoDoPlano;
+		
+	}
+	
+	public PlanoDeSaude() {
+		
+	}
+	
 	// craiando metodo de acesso
 
 	// método de acesso

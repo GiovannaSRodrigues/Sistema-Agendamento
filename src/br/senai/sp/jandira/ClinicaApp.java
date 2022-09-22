@@ -48,6 +48,8 @@ public class ClinicaApp {
 
 		// testando
 		// planos
+		
+		//fazendo sobrecarga do método construtor método construtor
 		PlanoDeSaude plano1 = new PlanoDeSaude();
 
 		plano1.setOperadora("Unimod");
@@ -59,7 +61,9 @@ public class ClinicaApp {
 		PlanoDeSaude plano2 = new PlanoDeSaude();
 		plano2.setOperadora("Bradesco");
 		plano2.setTipoDoPlano("Ouro");
-
+		
+		
+		PlanoDeSaude plano3 = new PlanoDeSaude("Amil");
 		// JOptionPane.showMessageDialog(null, planoBradesco.getOperadora());
 
 		// endereco
