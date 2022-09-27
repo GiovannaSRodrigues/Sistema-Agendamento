@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 import br.senai.sp.jandira.model.PlanoDeSaude;
 
-public class PlanoDeSaudeDao {
+public class PlanoDeSaudeDao { //Simular banco de dados
 	
 	//precisamos do PLano de saúde 
 	//classe dao precisa do objeto que vai manipular
 	
 	private PlanoDeSaude planoDeSaude;
 	//lista onde vai guarda// "banco de dados"
-	private ArrayList<PlanoDeSaude> planos = new ArrayList<>();
+	private static ArrayList<PlanoDeSaude> planos = new ArrayList<>();
 	
 	//construtor
 	public PlanoDeSaudeDao(PlanoDeSaude planoDeSaude) {
@@ -22,14 +22,13 @@ public class PlanoDeSaudeDao {
 		
 	}
 	
-	public void gravar (PlanoDeSaude planoDesaude) {
+	public void gravar (PlanoDeSaude planoDeSaude) {
 		
 		//grava o plano de saude no planos
-		
 		planos.add(planoDeSaude);
 	}
 	
-	public ArrayList<PlanoDeSaude> listarTodos() {
+	public static ArrayList<PlanoDeSaude> listarTodos() {
 		//retorna a arreyLIst
 		return planos;
 	}

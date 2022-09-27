@@ -1,10 +1,14 @@
 package br.senai.sp.jandira.testes;
 
+import java.io.ObjectInputStream.GetField;
 import java.lang.reflect.Array;
 import java.security.PublicKey;
 import java.util.ArrayList;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 import br.senai.sp.jandira.dao.PlanoDeSaudeDao;
+import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.PlanoDeSaude;
 
 public class TestArrayList {
@@ -78,15 +82,73 @@ public class TestArrayList {
 //		ArrayList<Double> precosList = new ArrayList<>();
 //		precosList.add(5.9);
 		
+		//criando listas
 		PlanoDeSaude plano1 = new PlanoDeSaude("Amil","Basicc");
 		PlanoDeSaude plano2 = new PlanoDeSaude("Alians","Bronze");
+		PlanoDeSaude plano3 = new PlanoDeSaude("Unimed","Prata");
+		PlanoDeSaude plano4 = new PlanoDeSaude("Notedrame","Advacend");
+		//adicionando listas
+		ArrayList<PlanoDeSaude> planos =new ArrayList<>();
+		planos.add(plano1);
+		planos.add(plano2);
+		planos.add(plano3);
+		planos.add(plano4);
 		
-		PlanoDeSaudeDao dao = new PlanoDeSaudeDao(plano1);
+		//imprimindo os nomes das operadores dentro do Array  usando while
 		
-		dao.gravar(plano1);
-		dao.gravar(plano2);
+		System.out.println("saiu do looping");
+		int i = 0;
 		
-		System.out.println(dao.listarTodos());
+		//size : retorna o múmeros dentro da lista 
+		//while
+	while (i < planos.size()) {
+		System.out.println(planos.get(i).getOperadora());
+			i++;
+		}
+		
+		//System.out.println("saiu do looping");
+		
+	System.out.println("---------- Utilizando FOR ---------");
+	for (int contador=0; contador < planos.size(); contador++) {
+		System.out.println(planos.get(contador).getOperadora());
+	}
+	
+		
+	for (PlanoDeSaude plano : planos) {
+		System.out.println(plano.getOperadora());
+	}
+	System.out.println("---------- Utilizando FOR EACh ---------");
+	//Criar 3 especialidade, guardar especialidades em um arrayList
+	//exibir dados usando FOR EACh
+	
+	Especialidade e1 = new Especialidade();
+	e1.setNome("Cardiologia");
+	e1.setDescricao("Cuida do coração");
+	
+	Especialidade e2 = new Especialidade();
+	e2.setNome("otorrinno");
+	e2.setDescricao("Cuida do ouvido");
+	
+	Especialidade e3 = new Especialidade();
+	e3.setNome("fisioterapia");
+	e3.setDescricao("Cuida dos ossos e musculos");
+	
+	
+	ArrayList<Especialidade> especialidades = new ArrayList<>();
+	especialidades.add(e1);
+	especialidades.add(e2);
+	especialidades.add(e3);
+	
+	
+	for (Especialidade e : especialidades) {
+		System.out.printf("%s --%s\n", e.getNome(),e.getDescricao());
+	}
+//		PlanoDeSaudeDao dao = new PlanoDeSaudeDao(plano1);
+//		
+//		dao.gravar(plano1);
+//		dao.gravar(plano2);
+//		
+//		System.out.println(dao.listarTodos());
 	}
 
 }

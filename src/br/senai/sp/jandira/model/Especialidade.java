@@ -5,6 +5,21 @@ public class Especialidade {
 	// não deixamos
 	private String nome;
 	private String descricao;
+	//private static int quantidade;
+	
+	public String getNome() {
+		return nome;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 
 	// método de acesso getters and setters acessar os atributos
 	// não diretamente
@@ -16,26 +31,12 @@ public class Especialidade {
 	// quando chma o setNome tenho que passar uma string para ele
 	// criando o método set, para pegar do ClinicaApp.java "cardiologia" e guardar
 	// no String "nome", que está em público
-	public void setNome(String novoNome) {
-		nome = novoNome;
 
-	}
 
 	// criando o get nome retornando uma string
 	// prescisamos pegar o nome
 	// metodo para retornar, então string
 
-	public String getNome() {
-		// return o que quero que retorne
-		return nome;
-	}
 
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
 
 }
