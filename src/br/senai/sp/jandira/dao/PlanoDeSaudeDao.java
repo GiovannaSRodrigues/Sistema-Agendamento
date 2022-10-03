@@ -15,14 +15,14 @@ public class PlanoDeSaudeDao { //Simular banco de dados
 	
 	//construtor
 	public PlanoDeSaudeDao(PlanoDeSaude planoDeSaude) {
-		this.planoDeSaude = planoDeSaude;
+		this.planos.add(planoDeSaude);
 	}
 	
 	public PlanoDeSaudeDao() {
 		
 	}
-	
-	public void gravar (PlanoDeSaude planoDeSaude) {
+	//deixar estâtico para não precisar criar instâncias
+	public static void gravar (PlanoDeSaude planoDeSaude) {
 		
 		//grava o plano de saude no planos
 		planos.add(planoDeSaude);

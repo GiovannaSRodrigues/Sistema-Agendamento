@@ -1,8 +1,14 @@
 package br.senai.sp.jandira.model;
 
+import java.io.ObjectInputStream.GetField;
+
 //fora do métodos e deentro diretamente da classe PlanoDeSaude
 public class PlanoDeSaude {
 	// atributos
+	//o código tem que ser uníco para cada objeto
+	//contar objeto quantos planos de saúde, ser estático
+	private static int contador = 100;
+	private Integer codigo;
 	private String operadora;
 	private String tipoDoplano;
 	
@@ -12,22 +18,34 @@ public class PlanoDeSaude {
 	//não há retorno (void)
 	//o nome do metodo é o nome da classe
 	
+	
+	
 	public PlanoDeSaude(String operadora) {
 		// contrutor que não faz nada padrão/defalt 
 		//vamos sobreescrever
 		this.operadora = operadora;
+		
+		//codigo e contador
+		atualizarCodigo();
 	}
 	//podemos ter mesma asssinaturas se or argumentos forem diferentes
 	public PlanoDeSaude(String operadora, String tipoDoPlano) {
 		this.operadora = operadora;
 		this.tipoDoplano = tipoDoPlano;
-		
+		//codigo e contador
+		atualizarCodigo();	
 	}
 	
 	public PlanoDeSaude() {
-		
+		//codigo e contador
+		atualizarCodigo();
 	}
 	
+	//pega o atributo codigo e recebe o contador
+	private void atualizarCodigo() {
+		this.codigo = contador;
+		contador++;
+	}
 	// craiando metodo de acesso
 
 	// método de acesso
@@ -47,8 +65,11 @@ public class PlanoDeSaude {
 		// OBS cor marrom: variável
 		this.operadora = operadora;
 	}
-
-	//
+	
+	// get código para toda vez que quizer saber o numero de um determinado objeto
+	public Integer getCodigo() {
+		return codigo;
+	}
 	public String getOperadora() {
 		// por boa prática colocamos this, não precisa
 		return this.operadora;
@@ -65,5 +86,9 @@ public class PlanoDeSaude {
 
 	public String getDadoDoPlano() {
 		return "Plano:" + this.operadora + "," + this.tipoDoplano;
+	}
+	//é static para qualque objeto
+	public static int getContador() {
+		return contador;
 	}
 }
