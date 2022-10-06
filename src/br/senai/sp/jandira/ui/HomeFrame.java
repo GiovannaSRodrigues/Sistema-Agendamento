@@ -1,10 +1,16 @@
 
 package br.senai.sp.jandira.ui;
 
+import br.senai.sp.jandira.dao.PlanoDeSaudeDao;
+import javax.swing.JTable;
+
 public class HomeFrame extends javax.swing.JFrame {
 
     public HomeFrame() {
+        System.out.println("Criando a tela home...");
         initComponents();
+        PlanoDeSaudeDao.criarPlanoDeSaudeTeste();
+        criarTabelaPlanosDeSaude();
     }
     
     @SuppressWarnings("unchecked")
@@ -23,7 +29,7 @@ public class HomeFrame extends javax.swing.JFrame {
         panelPlanodeSaude = new javax.swing.JPanel();
         labelPlanodeSaude = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablePlanoDeSaude = new javax.swing.JTable();
         buttonnew = new javax.swing.JButton();
         buttonedit = new javax.swing.JButton();
         buttondelete = new javax.swing.JButton();
@@ -134,7 +140,7 @@ public class HomeFrame extends javax.swing.JFrame {
         panelPlanodeSaude.add(labelPlanodeSaude);
         labelPlanodeSaude.setBounds(20, 10, 120, 20);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablePlanoDeSaude.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -145,7 +151,7 @@ public class HomeFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablePlanoDeSaude);
 
         panelPlanodeSaude.add(jScrollPane1);
         jScrollPane1.setBounds(20, 50, 1000, 320);
@@ -169,14 +175,14 @@ public class HomeFrame extends javax.swing.JFrame {
         buttondelete.setBounds(800, 380, 70, 60);
 
         getContentPane().add(panelPlanodeSaude);
-        panelPlanodeSaude.setBounds(0, 240, 1090, 530);
+        panelPlanodeSaude.setBounds(0, 240, 1090, 490);
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 255));
         jPanel3.setLayout(null);
         getContentPane().add(jPanel3);
         jPanel3.setBounds(0, 100, 1090, 140);
 
-        setBounds(0, 0, 1105, 779);
+        setBounds(0, 0, 1105, 732);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonpacientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonpacientActionPerformed
@@ -251,10 +257,33 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelPlanodeSaude;
     private javax.swing.JLabel labelicon;
     private javax.swing.JLabel labeltitulo;
     private javax.swing.JPanel panelPlanodeSaude;
+    private javax.swing.JTable tablePlanoDeSaude;
     // End of variables declaration//GEN-END:variables
+
+     private void criarTabelaPlanosDeSaude() {
+     
+         tablePlanoDeSaude.setModel(PlanoDeSaudeDao.getTableModel());
+        //desativar o redimensionamento da jtable
+        tablePlanoDeSaude.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        
+        //Definir a largura de cada coluna 
+        tablePlanoDeSaude.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tablePlanoDeSaude.getColumnModel().getColumn(1).setPreferredWidth(300);
+        tablePlanoDeSaude.getColumnModel().getColumn(2).setPreferredWidth(300);
+        
+        //Impedir/bloquear a movimentação das colunas 
+        tablePlanoDeSaude.getTableHeader().setReorderingAllowed(false);
+        
+        //Bloquear edição das células 
+        tablePlanoDeSaude.setDefaultEditor(Object.class, null);
+ 
+     
+     }
+
+
+
 }
